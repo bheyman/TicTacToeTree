@@ -39,14 +39,32 @@ $4 \text{ }\frac{\text{bytes}}{\text{square}} \times 9 \text{ }\frac{\text{squar
 This is miniscule compared to the memory of a modern computer.
 It appears like we should not have an issue brute forcing the answer to this problem.
 
-## Invalid End States
+## Have The Computer Play
 
-Consider the following three examples:
+The 362880 figure is an overestimate of the number of end states.
+This computation includes many instances where the game should not have gotten to a filled board i.e., the game should have ended on an earlier turn.
+Rather than attempt to include this rule mathematically, we can simply have the computer play all games of tic-tac-toe, and count how many times the game ends.
+We know this is feasible because of the upper bound we established earlier; if each game takes 1 millisecond to complete, then we should only have to wait for approximately 6 minutes.
+
+### Eliminating Impossible Games
+
+Running the simulation yields the following results:
+
+- Game Ends On Turn 5: 1440
+- Game Ends On Turn 6: 5328
+- Game Ends On Turn 7: 47952
+- Game Ends On Turn 8: 72576
+- Game Ends On Turn 9: 81792
+- Stalemate: 46080
+
+Because the 'X' player always goes on odd turns, and the 'Y' player always goes on even turns, we can sum these values up:
+
+- Player 'X' Wins: 131184
+- Player 'Y' Wins: 77904
+- Stalemate: 46080
+
+This tells us something you probably already knew: if you're going to place 'X's and 'O's randomly, it is better to go first.
 
 
-
-
-
-1. Eliminating impossible states i.e., ones where the game should have ended
 2. Eliminating duplicate states i.e., two boards that are the same, reached thru different order
 3. Eliminating rotation/mirror states i.e., one board is a rotation/mirror of another (behavior is same)
