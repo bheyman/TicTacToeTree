@@ -57,14 +57,16 @@ Running the simulation yields the following results:
 - Game Ends On Turn 9: 81792
 - Stalemate: 46080
 
-Because the 'X' player always goes on odd turns, and the 'Y' player always goes on even turns, we can sum these values up:
+Because the 'X' player always goes on odd turns, and the 'O' player always goes on even turns, we can sum these values up:
 
 - Player 'X' Wins: 131184
-- Player 'Y' Wins: 77904
+- Player 'O' Wins: 77904
 - Stalemate: 46080
 
 This tells us something you probably already knew: if you're going to place 'X's and 'O's randomly, it is better to go first.
 
+![image](/images/possible_games_bar.png)
+![image](/images/possible_games_pie.png)
 
 2. Eliminating duplicate states i.e., two boards that are the same, reached thru different order
 3. Eliminating rotation/mirror states i.e., one board is a rotation/mirror of another (behavior is same)
