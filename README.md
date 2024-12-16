@@ -1,4 +1,7 @@
 # TicTacToeTree
+
+## Defining The Problem
+
 According to [Wikipedia](https://en.wikipedia.org/wiki/Tic-tac-toe): 
 
 > Tic-tac-toe (American English), noughts and crosses (Commonwealth English), or Xs and Os (Canadian or Irish English) is a paper-and-pencil game for two players who take turns marking the spaces in a three-by-three grid with *X* or *O*. 
@@ -64,9 +67,43 @@ Because the 'X' player always goes on odd turns, and the 'O' player always goes 
 - Stalemate: 46080
 
 This tells us something you probably already knew: if you're going to place 'X's and 'O's randomly, it is better to go first.
+We have also reduced our total number of end states from the original 362880 to 255168.
 
 ![image](/images/possible_games_bar.png)
 ![image](/images/possible_games_pie.png)
 
-2. Eliminating duplicate states i.e., two boards that are the same, reached thru different order
+### Eliminating Duplicate Boards
+
+In tic-tac-toe, there are multiple ways to reach the same board state.
+Consider the following example:
+
+(Show example of two games that take moves in different orders but end up in the same state)
+
+Two games end up at the same game state by turn 3, and therefore have the same list of possible continuations.
+In other words, there's no need to play those games more than once.
+Once again, because the problem size is small, we can solve this through brute force.
+We will have the computer play a game to its conclusion, and record the game state at each turn.
+Then, when the computer plays another game, we can check on each turn if the game state we are on has been seen before.
+If it has, then there's no need to continue.
+If it hasn't, then the computer can add this new state to the list, and continue playing.
+This should get us to a list of all possible board states of tic-tac-toe, for each turn of the game.
+
+Running the simulation yields the following results:
+
+- Turn 1 Boards: 9
+- Turn 2 Boards: 72
+- Turn 3 Boards: 252
+- Turn 4 Boards: 756
+- Turn 5 Boards: 1260 (120 Winners)
+- Turn 6 Boards: 1520 (148 Winners)
+- Turn 7 Boards: 1140 (444 Winners)
+- Turn 8 Boards: 390 (168 Winners)
+- Turn 9 Boards: 78 (62 Winners)
+- Stalemate Boards: 16
+
+It is interesting to see that there are only 16 unique stalemate boards.
+These boards can be seen below:
+
+![image](/images/stalemate_boards.png)
+
 3. Eliminating rotation/mirror states i.e., one board is a rotation/mirror of another (behavior is same)
