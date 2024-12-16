@@ -104,6 +104,26 @@ Running the simulation yields the following results:
 It is interesting to see that there are only 16 unique stalemate boards.
 These boards can be seen below:
 
-![image](/images/stalemate_boards.png)
+![image](/images/possible_stalemates.png)
 
-3. Eliminating rotation/mirror states i.e., one board is a rotation/mirror of another (behavior is same)
+### Eliminating Rotations
+
+Rotations don't do anything to change strategy... like rotating the paper... have the computer compare the current board state to all four possible rotations of all the seen states
+
+- Turn 1 Boards: 3
+- Turn 2 Boards: 18
+- Turn 3 Boards: 64
+- Turn 4 Boards: 192
+- Turn 5 Boards: 318 (33 Winners)
+- Turn 6 Boards: 380 (37 Winners)
+- Turn 7 Boards: 285 (111 Winners)
+- Turn 8 Boards: 100 (42 Winners)
+- Turn 9 Boards: 22 (18 Winners)
+- Stalemate Boards: 4
+
+### Eliminating Mirrors
+
+Still too many to represent graphically... One additional thing to eliminate... mirrors images, vertical or horizontal... strategy remains the same... consider rotations of the mirror states as well... same as before, check if these states exist in list of seen states
+
+
+
