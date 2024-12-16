@@ -35,14 +35,14 @@ bool compareBoard(int *board0, int *board1){
 		for(int j = 0; j < 9; j++){
 			returnVal = returnVal && (board0[j] == board1[j]);
 		}
-		/*
-		if(returnVal)
+		
+		if(returnVal){
 			for(int j = 0; j < 4-i; j++){
 				rotateBoard(board1);
 			}
 			return true;
+		}
 		rotateBoard(board1);
-		*/
 	}
 
 	return returnVal;

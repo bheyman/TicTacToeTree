@@ -4,6 +4,8 @@
 
 #include <utils.h>	/* checkWinner(), copyBoard(), printBoard() */
 
+int count[10] = {0};
+
 struct boardState{
 	int *board;			// 3x3 State of Board
 	bool winner;			// Is this a winning state?
@@ -43,7 +45,7 @@ int main(){
 
 	// FOR EACH TURN
 	for(int i = 0; i < 10; i++){
-		printf("Turn %02d (%d)\n\n", i,turns[i].count);
+		printf("Turn %02d (%d) (%d)\n\n", i,turns[i].count, count[i]);
 		printTurn(turns[i]);
 	}
 
@@ -90,6 +92,8 @@ void takeTurn(int *board, int turnNum){
 				// IF THE GAME IS NOT OVER, TAKE NEXT TURN
 				if(!turns[turnNum].boards[turns[turnNum].count-1].winner){
 					takeTurn(boardCopy, turnNum+1);
+				}else{
+					count[turnNum]++;
 				}
 			}
 
@@ -109,7 +113,7 @@ void printTurn(struct turnHeader turn){
 	
 		// FOR EACH BOARD
 		for(int j = 0; j < turn.count; j++){
-		
+	
 			printf("%c|%c|%c\t", 
 				(turn.boards[j].board[i*3+0] == 0) ? ' ' : (turn.boards[j].board[i*3+0] == 1) ? 'X' : (turn.boards[j].board[i*3+0] == 2) ? 'O' : '?', 
 				(turn.boards[j].board[i*3+1] == 0) ? ' ' : (turn.boards[j].board[i*3+1] == 1) ? 'X' : (turn.boards[j].board[i*3+1] == 2) ? 'O' : '?', 
