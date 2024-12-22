@@ -34,13 +34,18 @@ for i in range(0,len(lines)//5):
 
     turns[int(turn_num)].append((board_state,children))
 
-im = Image.new("RGB", (1000,20400), "#fff");
+im = Image.new("RGB", (8000,20400), "#fff");
 draw = ImageDraw.Draw(im);
 
 for i in range(0,len(turns)):
     for j in range(0,len(turns[i])):
-        draw_board(100*i,100*j,draw, turns[i][j][0])
+        draw_board(800*i,100*j,draw, turns[i][j][0])
+        
+        for k in range(0,len(turns[i][j][1])):
 
-im.show()
+            #draw.line([(400*i+100,100*j+50),(400*(i+1),100*turns[i][j][1][k]+50)],fill='black', width=1)
+            draw.line([(800*i+100,100*j+37),(800*(i+1)-25,100*int(turns[i][j][1][k])+37)],fill='black', width=1)
+
+#im.show()
 
 im.save("temp.jpg", quality=100)
