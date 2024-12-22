@@ -17,10 +17,30 @@ def draw_board(x,y, draw, state):
             elif state[j*3+i] == '2':
                 draw.text((x+25*i,y+25*j), "O", "black", align='center', anchor='mm')
 
-im = Image.new("RGB", (500,500), "#fff");
+file = open("temp.txt",'r')
+
+lines = file.readlines()
+
+turns = [[],[],[],[],[],[],[],[],[],[]]
+
+for i in range(0,len(lines)//5):
+    turn_num = lines[i*5+0].strip().split(" ")[1]
+    board_num = lines[i*5+1].strip().split(" ")[1]
+    board_state = lines[i*5+2].strip().split(" ")[2]
+    if(lines[i*5+3].strip() == 'Children:'):
+        children = []
+    else:
+        children = lines[i*5+3].strip().split(" ")[1].split(",")[0:-1]
+
+    turns[int(turn_num)].append((board_state,children))
+
+im = Image.new("RGB", (1000,20400), "#fff");
 draw = ImageDraw.Draw(im);
 
-draw_board(0,0,draw, "012012012")
-draw_board(100,100,draw, "000111222")
+for i in range(0,len(turns)):
+    for j in range(0,len(turns[i])):
+        draw_board(100*i,100*j,draw, turns[i][j][0])
 
 im.show()
+
+im.save("temp.jpg", quality=100)
