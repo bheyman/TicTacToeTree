@@ -7,7 +7,7 @@ According to [Wikipedia](https://en.wikipedia.org/wiki/Tic-tac-toe):
 > Tic-tac-toe (American English), noughts and crosses (Commonwealth English), or Xs and Os (Canadian or Irish English) is a paper-and-pencil game for two players who take turns marking the spaces in a three-by-three grid with *X* or *O*. 
 The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner. 
 
-Tic-tac-toe is a "solved game", meaning that the outcome is prediable from any state of play, given optimal strategy by both players.
+Tic-tac-toe is a "solved game", meaning that the outcome is predictable from any state of play, given optimal strategy by both players.
 In tic-tac-toe's case, optimal play by both players leads to a draw in every case.
 As the WOPR computer says in the film "WarGames":
 
